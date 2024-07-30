@@ -13,12 +13,12 @@ jobs:
       run: shc -f  client_assume_role.sh -o car_mac
     - name: Create executable
       run: shc -f  configure_engine_api.sh -o eac_mac
-    - name: Import GPG key
-      uses: crazy-max/ghaction-import-gpg@v6
-      with:
-        gpg_private_key: ${{ secrets.GPG_KEY }}
-        git_user_signingkey: true
-        git_commit_gpgsign: true
+    # - name: Import GPG key
+    #   uses: crazy-max/ghaction-import-gpg@v6
+    #   with:
+    #     gpg_private_key: ${{ secrets.GPG_KEY }}
+    #     git_user_signingkey: true
+    #     git_commit_gpgsign: true
     - name: Sign commit and push changes
       run: |
         git add .
