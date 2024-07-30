@@ -13,10 +13,16 @@ jobs:
       run: shc -f  client_assume_role.sh -o car_mac
     - name: Create executable
       run: shc -f  configure_engine_api.sh -o eac_mac
-    - name: Commit executable
+    - name: Import GPG key
+      uses: crazy-max/ghaction-import-gpg@v6
+      with:
+        gpg_private_key: ${{ secrets.GPG_KEY }}
+        git_user_signingkey: true
+        git_commit_gpgsign: true
+    - name: Sign commit and push changes
       run: |
-        git config --global user.name 'GitHub Actions'
-        git config --global user.email 'actions@github.com'
         git add .
-        git commit -m "Add latest macOS executable"
+        git config --local user.email "blackdocscloud@gmail.com"
+        git config --local user.name "darkbrains-bot"
+        git commit -m "Update image tag for peopleconnect"
         git push
