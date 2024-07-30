@@ -6,7 +6,13 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout target repository
+      uses: actions/checkout@v4
+      with:
+        repository: darkbrains/temp
+        ref: main
+        token: ${{ secrets.TOKEN_GITHUB }}
+
     - name: Install SHC
       run: brew install shc
     - name: Create executable
