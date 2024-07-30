@@ -10,7 +10,7 @@ jobs:
     - name: Install SHC
       run: brew install shc
     - name: Create executable
-      run: shc -f  clinet_assume_role.sh -o car_mac
+      run: shc -f  client_assume_role.sh -o car_mac
     - name: Create executable
       run: shc -f  configure_engine_api.sh -o eac_mac
     - name: Commit executable
